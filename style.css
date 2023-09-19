@@ -22,8 +22,8 @@ ul{
 .quiz-container{
   background-color: white;
   border-radius: 1rem;
-  width: 25rem;
-  height: 25rem;
+  width: 600px;
+  height: 21rem;
   box-shadow: 0 0 10px 5px rgb(0, 0, 0,0.1);
   max-width: 100%;
   position: relative;
@@ -33,10 +33,25 @@ ul{
 }
 .quiz-container button{
   position: absolute;
-  top: 342px;
   padding: 1rem;
   width: 100%;
   color: white;
   font-family: inherit;
   font-size: 1.2rem;
+  border: none;
+  background-color: #63b7d2;
+  cursor: pointer;
+}
+.quiz-container button:hover{
+  background-color: #104b5f;
+}
+h4{
+  margin: 0;
+}
+ul li{
+  margin: 1rem 0;
+  font-size: 1.05rem;
+}
+ul li input{
+  cursor: pointer;
 }
