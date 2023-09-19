@@ -80,14 +80,6 @@ const question_data = [
     correct: "a"
   }
 ];
-
-// code to deselect all radio buttons by default
-// document.addEventListener("DOMContentLoaded", function () {
-//   var radioButtons = document.querySelectorAll('input[type="radio"][name="answer"]');
-//   for (var i = 0; i < radioButtons.length; i++) {
-//       radioButtons[i].checked = false;
-//   }
-// });
 const Question=document.getElementById('question');
 const quiz = document.getElementById('quiz')
 const a_text = document.getElementById('a_text')
