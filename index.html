@@ -4,29 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz-App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> <!-- Include an external stylesheet -->
 </head>
 <body>
   <div class="quiz-container" id="quiz">
     <div class="quiz-header">
-    <h3 id="question">Question text here</h3>
-    <ul>
-      <li><input type="radio" id="a" name="answer" class="answer"> 
-        <label for=a id="a_text">options</label>
-      </li>
-      <li><input type="radio" id="b" name="answer" class="answer">
-         <label for=b id="b_text">options</label>
-      </li>
-      <li><input type="radio" id="c" name="answer" class="answer"> 
-        <label for=c id="c_text">options</label>
-      </li>
-      <li><input type="radio" id="d" name="answer" class="answer">
-         <label for=d id="d_text">options</label>
-      </li>
-    </ul>
+      <h3 id="question">Question text here</h3> <!-- Placeholder for displaying quiz questions -->
+      <ul>
+        <!-- List items for displaying answer options -->
+        <li>
+          <input type="radio" id="a" name="answer" class="answer">
+          <label for="a" id="a_text">Option A</label> <!-- Label for option A -->
+        </li>
+        <li>
+          <input type="radio" id="b" name="answer" class="answer">
+          <label for="b" id="b_text">Option B</label> <!-- Label for option B -->
+        </li>
+        <li>
+          <input type="radio" id="c" name="answer" class="answer">
+          <label for="c" id="c_text">Option C</label> <!-- Label for option C -->
+        </li>
+        <li>
+          <input type="radio" id="d" name="answer" class="answer">
+          <label for="d" id="d_text">Option D</label> <!-- Label for option D -->
+        </li>
+      </ul>
+    </div>
+    <button id="submit" type="button" onclick="SubmitBtn()">Submit</button> <!-- Submit button for quiz -->
   </div>
-  <button id="submit" type="button" onclick="SubmitBtn()">Submit</button>
-</div>
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- Include an external JavaScript file -->
 </body>
 </html>

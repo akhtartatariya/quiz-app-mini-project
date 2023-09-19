@@ -1,3 +1,4 @@
+// Define an array of objects, each object represents a question and its options.
 const question_data = [
   {
     question: "What does CPU stand for in the context of computing?",
@@ -5,8 +6,9 @@ const question_data = [
     b: "Computer Personal Unit",
     c: "Central Process Unit",
     d: "Computer Power Unit",
-    correct: "a"
+    correct: "a" // Correct answer for this question.
   },
+  // ... (similar objects for other questions)
   {
     question: "Which programming language is commonly used for developing web-based applications?",
     a: "C++",
@@ -80,62 +82,72 @@ const question_data = [
     correct: "a"
   }
 ];
+
+// Get references to HTML elements you'll interact with.
 const Question=document.getElementById('question');
 const quiz = document.getElementById('quiz')
 const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
-const answerEls=document.querySelectorAll('.answer');
+const answerEls=document.querySelectorAll('.answer'); // Select all elements with class 'answer'.
 
-let Quiz_count=0;
-let score=0;
+// Initialize variables to keep track of the quiz progress and score.
+let Quiz_count=0; // Keeps track of the current question.
+let score=0; // Keeps track of the number of correct answers.
 loadQuiz();
 
-function loadQuiz(){
+// Function to load a new quiz question.
+function loadQuiz() {
+  // Deselect any previously selected answer.
   deselectAnswer();
-  const currentQuizData=question_data[Quiz_count]
-  Question.innerText=currentQuizData.question;
-  a_text.innerText=currentQuizData.a;
-  b_text.innerText=currentQuizData.b;
-  c_text.innerText=currentQuizData.c;
-  d_text.innerText=currentQuizData.d;
+
+  // Get the current quiz data.
+  const currentQuizData = question_data[Quiz_count];
+
+  // Populate HTML elements with the current question and answer options.
+  Question.innerText = currentQuizData.question;
+  a_text.innerText = currentQuizData.a;
+  b_text.innerText = currentQuizData.b;
+  c_text.innerText = currentQuizData.c;
+  d_text.innerText = currentQuizData.d;
 }
 
-function getSelected(){
-  let answer=undefined;
-  answerEls.forEach((answerEl)=>{
-    if(answerEl.checked){
+// Function to get the selected answer.
+function getSelected() {
+  let answer = undefined;
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
       answer = answerEl.id;
     }
   });
   return answer;
 }
 
-function deselectAnswer(){
-  answerEls.forEach((answerEl)=>{
-    answerEl.checked=false;
+// Function to deselect all answer options.
+function deselectAnswer() {
+  answerEls.forEach((answerEl) => {
+    answerEl.checked = false;
   });
 }
 
-function SubmitBtn(){
+
+// Function to handle the submission of the answer.
+function SubmitBtn() {
   const answer = getSelected();
   console.log(answer);
 
-  if(answer){
-    if(answer===question_data[Quiz_count].correct){
-      score++;
+  if (answer) {
+    if (answer === question_data[Quiz_count].correct) {
+      score++; // Increment the score if the answer is correct.
     }
-    Quiz_count++; 
-    if(Quiz_count<question_data.length){
-      loadQuiz()
-    }
-    else{
-      //show the results
-      quiz.innerHTML=`<h2 align="center">Your answered correctly at ${score} / ${question_data.length} questions.</h2>`
+    Quiz_count++; // Move to the next question.
+
+    if (Quiz_count < question_data.length) {
+      loadQuiz(); // Load the next question if available.
+    } else {
+      // Show the quiz results when all questions have been answered.
+      quiz.innerHTML = `<h2 align="center">Your answered correctly at ${score} / ${question_data.length} questions.</h2>`;
     }
   }
-  
-
-  
 }
