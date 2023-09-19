@@ -81,26 +81,69 @@ const question_data = [
   }
 ];
 
+// code to deselect all radio buttons by default
+// document.addEventListener("DOMContentLoaded", function () {
+//   var radioButtons = document.querySelectorAll('input[type="radio"][name="answer"]');
+//   for (var i = 0; i < radioButtons.length; i++) {
+//       radioButtons[i].checked = false;
+//   }
+// });
 const Question=document.getElementById('question');
-
+const quiz = document.getElementById('quiz')
 const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
+const answerEls=document.querySelectorAll('.answer');
 
-
-let Quizdata=0;
+let Quiz_count=0;
+let score=0;
 loadQuiz();
 
 function loadQuiz(){
-  const currentQuizData=question_data[Quizdata]
+  deselectAnswer();
+  const currentQuizData=question_data[Quiz_count]
   Question.innerText=currentQuizData.question;
   a_text.innerText=currentQuizData.a;
   b_text.innerText=currentQuizData.b;
   c_text.innerText=currentQuizData.c;
   d_text.innerText=currentQuizData.d;
 }
+
+function getSelected(){
+  let answer=undefined;
+  answerEls.forEach((answerEl)=>{
+    if(answerEl.checked){
+      answer = answerEl.id;
+    }
+  });
+  return answer;
+}
+
+function deselectAnswer(){
+  answerEls.forEach((answerEl)=>{
+    answerEl.checked=false;
+  });
+}
+
 function SubmitBtn(){
-  Quizdata++; 
-  loadQuiz() 
+  const answer = getSelected();
+  console.log(answer);
+
+  if(answer){
+    if(answer===question_data[Quiz_count].correct){
+      score++;
+    }
+    Quiz_count++; 
+    if(Quiz_count<question_data.length){
+      loadQuiz()
+    }
+    else{
+      //show the results
+      quiz.innerHTML=`<h2 align="center">Your answered correctly at ${score} / ${question_data.length} questions.</h2>`
+    }
+  }
+  
+
+  
 }
