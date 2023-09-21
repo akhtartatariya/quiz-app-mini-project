@@ -59,7 +59,9 @@ ul {
 
 /* Basic heading styles */
 h4 {
+  padding: 1rem;
   margin: 0;
+  text-align: center;
 }
 
 /* Styles for list items in the quiz */
