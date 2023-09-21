@@ -97,6 +97,13 @@ let Quiz_count=0; // Keeps track of the current question.
 let score=0; // Keeps track of the number of correct answers.
 loadQuiz();
 
+// Function to deselect all answer options.
+function deselectAnswer() {
+  answerEls.forEach((answerEl) => {
+    answerEl.checked = false;
+  });
+}
+
 // Function to load a new quiz question.
 function loadQuiz() {
   // Deselect any previously selected answer.
@@ -124,12 +131,6 @@ function getSelected() {
   return answer;
 }
 
-// Function to deselect all answer options.
-function deselectAnswer() {
-  answerEls.forEach((answerEl) => {
-    answerEl.checked = false;
-  });
-}
 
 
 // Function to handle the submission of the answer.
@@ -147,7 +148,9 @@ function SubmitBtn() {
       loadQuiz(); // Load the next question if available.
     } else {
       // Show the quiz results when all questions have been answered.
-      quiz.innerHTML = `<h2 align="center">Your answered correctly at ${score} / ${question_data.length} questions.</h2>`;
+      quiz.style.height="0px";
+      quiz.style.boxShadow="none";
+      quiz.innerHTML = ` <h2 align="center">Your answered correctly at ${score} / ${question_data.length} questions.</h2> <button onclick='location.reload()'>Reload </button>`;
     }
   }
 }
