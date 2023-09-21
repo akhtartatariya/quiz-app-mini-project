@@ -50,6 +50,7 @@ ul {
   border: none;
   background-color: #63b7d2;
   cursor: pointer;
+  border-radius: 0 0 1rem 1rem;
 }
 
 /* Styles for button hover effect */
